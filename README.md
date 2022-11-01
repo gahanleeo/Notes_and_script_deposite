@@ -1,4 +1,6 @@
 # Notes(# bold size)
+# how to write code inside the github => use \``` ``` this symbol to cover the code 
+# use "\\" to esacpe some keys, just like regex
  
 ## AWK useful tools 
 
@@ -37,7 +39,7 @@ https://stackoverflow.com/questions/12455116/how-to-add-a-character-at-the-end-o
 https://stackoverflow.com/questions/34532677/how-to-assign-the-result-of-echo-to-a-variable-in-bash-script
 
 
-for i in *.bam; do sample_name=`echo $i | awk -F "." '{print $1}'`; samtools sort -@ 7 $i >  ${sample_name}.sorted.bam
+``for i in *.bam; do sample_name=`echo $i | awk -F "." '{print $1}'`; samtools sort -@ 7 $i >  ${sample_name}.sorted.bam``
 
 ###  curl and variable in read line in linux
 https://stackoverflow.com/questions/8865241/bash-curl-and-variable-in-the-middle-of-the-url
