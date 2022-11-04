@@ -1,0 +1,6 @@
+# use for loop
+# use \ to escape $ sign
+# swarm -f m2.cmd --module minimap2,samtools --gres=lscratch:1500 -g 70 -t 30 --time=48:00:00 
+for i in {41..48}; do echo  "minimap2 -t 12 -ax map-ont /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa  SRR138670${i}.fastq.gz | samtools sort -@ 16 -T /lscratch/\$SLURM_JOB_ID/SRR138670${i} -o /lscratch/\$SLURM_JOB_ID/SRR138670${i}.sorted.bam ; cp /lscratch/\$SLURM_JOBID/*sorted.bam /data/leec20/1000_genome/bam_b2/." >> swarmm.cmd ; done
+
+

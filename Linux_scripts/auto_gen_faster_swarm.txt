@@ -1,0 +1,5 @@
+# use for loop
+# use \ to escape $ sign
+# swarm -f cmdfile --module sratoolkit --gres=lscratch:1500 -g 100  -t 12
+
+for i in {41..50}; do echo  "fasterq-dump -t /lscratch/\$SLURM_JOBID  -O /lscratch/\$SLURM_JOBID SRR138670$i ; pigz -p24 /lscratch/\$SLURM_JOBID/SRR138670$i* ; cp /lscratch/\$SLURM_JOBID/SRR138670$i*  /data/\$USER/1000_genome/ ; echo $i done!  " >> swarmm.cmd ; done

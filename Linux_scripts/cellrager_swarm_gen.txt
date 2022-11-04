@@ -1,0 +1,5 @@
+# use for loop
+# use \ to escape $ sign
+
+
+for i in {1..11}; do echo  "cellranger count --id pbres$i --fastqs=/data/leec20/RNA_seq_analysis_done/sc_covid/fastq_GSE157344/"p$i"_blood --transcriptome=\$CELLRANGER_REF/refdata-gex-GRCh38-2020-A --sample=pa --localcores=\$SLURM_CPUS_PER_TASK" >> swarmm.cmd ; done

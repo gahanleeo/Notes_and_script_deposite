@@ -1,0 +1,9 @@
+# use for loop
+# use \ to escape $ sign
+# swarm -f m2.cmd --module minimap2,samtools --gres=lscratch:1500 -g 70 -t 30 --time=48:00:00 
+for i in *.fastq,gz
+do
+file=`echo $i | sed 's/.fastq.gz//'`
+echo  "source /data/leec20/conda/etc/profile.d/conda.sh ; conda activate PacBio ; pbmm2 align /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa $i ${file}.sorted.bam -j 24 -m 10G --sort --preset CCS --rg '@RG\tID:myid\tSM:mysample' --log-level DEBUG" >> swarmm.cmd
+done
+
