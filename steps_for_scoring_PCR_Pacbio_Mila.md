@@ -80,7 +80,7 @@ $ ./straglr.py
 
 
 # since it's bam file, it can score directly after finish
-
+```
 for i in *.bam
 do
 ff=`echo $i | sed 's/.sorted.bam//'`
@@ -88,7 +88,7 @@ straglr.py ${i} ~/Desktop/straglr_scoring_tool_for_long_read/toolinpus_and_HPRC_
  --max_str_len 100 #optional
 echo "done ${ff}"
 done
-
+```
 
 # after finshed, the .tsv file can be modify throug "adding_filename_and_combine_big.R" in R_script folder
 # for genotyping, can use igvtoolcount.R in conda env called "igvtool_count_auto.R"
@@ -106,7 +106,7 @@ done
 ######################################
 
 # go to folder of bam files, use samtools to get all the read sequence from bam file.
-
+```
 for j in *
 do
 cd ${j}
@@ -119,7 +119,7 @@ cat ~/Desktop/fasta_of_each/${ff}_all_fasta.txt |sort | uniq | tr '\t' '\n' > ~/
 rm ~/Desktop/fasta_of_each/${ff}_all_fasta.txt
 cd ..
 done
-
+```
 
 
 ####################################################################################################
@@ -156,15 +156,15 @@ F_rc: TGTCTGCTTCCTCCCTTCTG
 
 R: ACCACGCCGAGTCAGATAAG
 R_rc: CTTATCTGACTCGGCGTGGT
-
+```
 perl ../in_silico_pcr-master/in_silico_PCR.pl -s SampleM_TERTr4_bc1009_F--bc1067_R_all_fasta.txt -a CAGAAGGGAGGAAGCAGACA -b CTTATCTGACTCGGCGTGGT -l 20000000 -m -i > ../output.txt
 perl ../in_silico_pcr-master/in_silico_PCR.pl -s SampleM_TERTr4_bc1009_F--bc1067_R_all_fasta.txt -a TGTCTGCTTCCTCCCTTCTG -b ACCACGCCGAGTCAGATAAG -l 20000000  -m -i > ../output.txt
-
+```
 
 # output the result txt file, take avg of length, and divide 42bp
-
+```
 cat output.txt | awk 'NR>1' | awk '{total += $4} END {print total/NR/42}'
-
+```
 # make for loop and cat all the result
 
 
@@ -172,11 +172,11 @@ cat output.txt | awk 'NR>1' | awk '{total += $4} END {print total/NR/42}'
 
 
 # get reads from bam files
-
+```
 for i in *.bam ; do ff=`echo $i| sed 's/.bam//'` ; x=`samtools view ${i} | awk '{print $1}' | wc -l` ; echo -e  "${ff}${x}" | tr -s " "| tr " " "," ; done  > ~/Desktop/123.txt
 
 for i in *.bam ; do ff=`echo $i| sed 's/.bam//'` ; x=`samtools view ${i} | awk '{print $1}' | wc -l` ; echo -e  "${ff}\t${x}" >> 123.txt
-
+```
 # straglr version 1.2.0 somehow is better?
 
 
