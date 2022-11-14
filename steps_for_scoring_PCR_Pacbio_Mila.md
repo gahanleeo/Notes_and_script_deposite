@@ -192,6 +192,7 @@ for i in *.bam ; do ff=`echo $i| sed 's/.bam//'` ; x=`samtools view ${i} | awk '
 
 # something like below , grep -f is for file, maybe no need 
 
+```
 for i in *.txt
 do
   ff=`echo $i | sed 's/.txt//'`
@@ -202,7 +203,7 @@ do
   rm ../../sg_b/${ff}.header.txt ../../sg_b/${ff}.r4.sam
   echo "done! ${i}"
 done
-
+```
 
 
 ###
