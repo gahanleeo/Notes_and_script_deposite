@@ -16,7 +16,7 @@ https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
 ``` | => either or ```
 
 Two regular expressions may be joined by the infix operator ‘⁠|⁠’; the resulting regular expression matches any string matching either subexpression. For example, ‘⁠abba|cde⁠’ matches either the string abba or the string cde. Note that alternation does not work inside character classes, where ‘⁠|⁠’ has its literal meaning.
-ex" ```ab|d``` ==> it will match ```***ab***c***d***e```
+ex" ```ab|d``` ==> it will match  **ab**c**d**e 
 
 
 
