@@ -1,18 +1,21 @@
 # Notes related to R about some useful command/infromation
 
-- related to R plotting margin:
+### related to R plotting margin:
 ```
 par()
 ```
-
 https://r-charts.com/base-r/margins/
 
 - save image in R 
+  
+    https://stackoverflow.com/questions/7144118/how-to-save-a-plot-as-image-on-the-disk
 
-https://stackoverflow.com/questions/7144118/how-to-save-a-plot-as-image-on-the-disk
+- plot and output pdf files, keywords: ```pdf()``` and ```dev.off()``` at the end of script
+  
+    https://bookdown.org/ndphillips/YaRrr/saving-plots-to-a-file-with-pdf-jpeg-and-png.html
 
 
-- Regex cheat sheet in R 
+### Regex cheat sheet in R 
 
 https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
 
@@ -25,8 +28,13 @@ Two regular expressions may be joined by the infix operator ‘⁠|⁠’; the r
 ex" ```ab|d``` ==> it will match  **ab**c**d**e 
 
 
+### How to remove “NA” value in data frame? 
 
-- if else loop, if ( statement  == TRUE) {excuse this} else {if is FALSE, excuse this}
+https://stackoverflow.com/questions/4862178/remove-rows-with-all-or-some-nas-missing-values-in-data-frame
+
+
+
+### if else loop, if ( statement  == TRUE) {excuse this} else {if is FALSE, excuse this}
 
 
 - if else loop example of how to play with data
@@ -45,17 +53,16 @@ use ```ifelse()``` function is powerful
 
 
 
-
-- How to create a data frame and append certain row into that data frame. Important takeaway:
+### How to create a data frame and append certain row into that data frame. Important takeaway:
 
  ***assign the empty data frame need to be OUTSIDE of the the loop
 
 
-- How to deal when X and dots added to column names when creating a data.frame (duplicate columns)
+### How to deal when X and dots added to column names when creating a data.frame (duplicate columns)
 
 When you create a data.frame, by default it has the option check.names = TRUE. This mean R will check the names provided are syntactically valid names, and using X ``` check.names =  FALSE,``` but hard to use data...
 
-- order() function to sort multiple column :
+### order() function to sort multiple column :
 
 https://chartio.com/resources/tutorials/how-to-sort-a-data-frame-by-multiple-columns-in-r/
 
@@ -64,21 +71,21 @@ https://chartio.com/resources/tutorials/how-to-sort-a-data-frame-by-multiple-col
 https://stackoverflow.com/questions/11977102/order-data-frame-rows-according-to-vector-with-specific-order/11977256#11977256
 
 
-- very detailed ggplot2:
+### very detailed ggplot2:
 
 https://ggplot2.tidyverse.org/reference/geom_bar.html
 
 - the ```position_dodge2()``` is cancel the default stacking in the gemo_barplot
 
 
-- extract specific columns from a data frame
+### extract specific columns from a data frame
 
 https://stackoverflow.com/questions/10085806/extracting-specific-columns-from-a-data-frame
 
 ```T1 = select(f1,hgnc_symbol,target)```
 
 
--how to select row from multiple duplication dataset 
+### how to select row from multiple duplication dataset 
 
 Use the function``` distinct()```
 ```
@@ -91,11 +98,12 @@ f3 = f2 %>% distinct(Isolate, .keep_all = TRUE)
 rm()
 ```
 
-- How to extracting information related to a list of gene names from a file, this is ***super useful
+### How to extracting information related to a list of gene names from a file, this is ***super*** useful
 
 use ```%in``` and ``` which ``` 
 
 ```Selection<-file1[file1$"Gene name" %in% file2$"Gene Name",]```
+
 ```f.set <- f.straglr[ which(f.straglr$read %in% f$read), ]```
 
  
@@ -107,7 +115,4 @@ use ```%in``` and ``` which ```
 pp.uniq$gp = gsub("\\([0-9]+\\)","",pp.uniq$genotype)
 ```
 
-- How to remove “NA” value in data frame? 
-
-https://stackoverflow.com/questions/4862178/remove-rows-with-all-or-some-nas-missing-values-in-data-frame
 
