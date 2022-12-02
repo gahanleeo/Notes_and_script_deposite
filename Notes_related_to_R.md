@@ -4,9 +4,11 @@
 ```
 par()
 ```
+
 https://r-charts.com/base-r/margins/
 
 - save image in R 
+
 https://stackoverflow.com/questions/7144118/how-to-save-a-plot-as-image-on-the-disk
 
 
@@ -65,10 +67,12 @@ https://stackoverflow.com/questions/11977102/order-data-frame-rows-according-to-
 - very detailed ggplot2:
 
 https://ggplot2.tidyverse.org/reference/geom_bar.html
+
 - the ```position_dodge2()``` is cancel the default stacking in the gemo_barplot
 
 
 - extract specific columns from a data frame
+
 https://stackoverflow.com/questions/10085806/extracting-specific-columns-from-a-data-frame
 
 ```T1 = select(f1,hgnc_symbol,target)```
@@ -104,5 +108,6 @@ pp.uniq$gp = gsub("\\([0-9]+\\)","",pp.uniq$genotype)
 ```
 
 - How to remove “NA” value in data frame? 
+
 https://stackoverflow.com/questions/4862178/remove-rows-with-all-or-some-nas-missing-values-in-data-frame
 
