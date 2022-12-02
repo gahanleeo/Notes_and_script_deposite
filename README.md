@@ -100,5 +100,9 @@ ex:
 >03_99_90_asddastatcgfg
 >03_98_dd_dsfsfsf
 
+### R plotting related to margin setting:
+
+https://r-charts.com/base-r/margins/
+
 
 
