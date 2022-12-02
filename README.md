@@ -2,21 +2,8 @@
 # the filename shoud called xxx.md so that the hightlight stuff can work
 # how to write code inside the github => use \``` ``` this symbol to cover the code 
 # use "\\" to esacpe some keys, just like regex
- 
-
 ## Awk, grep, sed, Regex in Linux 
 
-### Regex cheat sheet in R 
-
-https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
-
-
-#### Regex ```|``` in R: 
-
-``` | => either or ```
-
-Two regular expressions may be joined by the infix operator ‘⁠|⁠’; the resulting regular expression matches any string matching either subexpression. For example, ‘⁠abba|cde⁠’ matches either the string abba or the string cde. Note that alternation does not work inside character classes, where ‘⁠|⁠’ has its literal meaning.
-ex" ```ab|d``` ==> it will match  **ab**c**d**e 
 
 
 
@@ -99,10 +86,6 @@ ex:
 >09_04_04_saslkmmdlkmd
 >03_99_90_asddastatcgfg
 >03_98_dd_dsfsfsf
-
-### R plotting related to margin setting:
-
-https://r-charts.com/base-r/margins/
 
 
 
