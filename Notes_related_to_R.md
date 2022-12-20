@@ -114,5 +114,14 @@ use ```%in``` and ``` which ```
 ```
 pp.uniq$gp = gsub("\\([0-9]+\\)","",pp.uniq$genotype)
 ```
+### Create column based on presence of string pattern and ifelse
+
+``` grepl() ```
+
+```
+if (grepl('SRR.*',ff$read_id[i])){ ...} 
+```
+
+https://stackoverflow.com/questions/25372082/create-column-based-on-presence-of-string-pattern-and-ifelse
 
 
