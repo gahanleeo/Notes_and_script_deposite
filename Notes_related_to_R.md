@@ -125,3 +125,7 @@ if (grepl('SRR.*',ff$read_id[i])){ ...}
 https://stackoverflow.com/questions/25372082/create-column-based-on-presence-of-string-pattern-and-ifelse
 
 
+
+
+### Reshaping dataset when have same row/column!!!
+https://mgimond.github.io/ES218/Week03b.html
