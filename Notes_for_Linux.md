@@ -82,3 +82,27 @@ ex:
 >03_99_90_asddastatcgfg
 >03_98_dd_dsfsfsf
 
+
+
+---
+---
+
+### if else usage in liunx
+
+https://unix.stackexchange.com/questions/109625/shell-scripting-z-and-n-options-with-if
+
+for example, use this line to validate whether it has input
+use ```[-z]``` function
+
+```
+input=$1
+
+if [ -z $input ]; then
+	echo "Usage: ./srx_h5_to_bam.sh <srx.list> [jid]"
+	echo "No srx.list provided as \$1. Exit."
+ # shutdown the script
+ exit -1
+fi
+
+```
+
