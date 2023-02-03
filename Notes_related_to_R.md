@@ -136,4 +136,6 @@ but the reshape2 lib in R is also useful:
 
 https://seananderson.ca/2013/10/19/reshape/
 
+long to wide dataset: 
+```dcast(aql, month ~ variable)```
 
