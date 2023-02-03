@@ -129,3 +129,11 @@ https://stackoverflow.com/questions/25372082/create-column-based-on-presence-of-
 
 ### Reshaping dataset when have same row/column!!!
 https://mgimond.github.io/ES218/Week03b.html
+
+The link probably down...
+
+but the reshape2 lib in R is also useful:
+
+https://seananderson.ca/2013/10/19/reshape/
+
+
