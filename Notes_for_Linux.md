@@ -106,3 +106,23 @@ fi
 
 ```
 
+
+
+### How to use 2 variable at the same loop 
+
+https://unix.stackexchange.com/questions/390283/how-to-iterate-two-variables-in-a-sh-script
+
+The key popint is use ```set``` and ```shift``` in the script. For example:
+
+```
+VAR1="abc def ghi"
+VAR2="1 2 3"
+
+set $VAR2
+
+for i in $VAR1; do
+	echo command "$i" "$1"
+	shift
+done
+
+```
