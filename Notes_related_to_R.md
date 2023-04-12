@@ -147,7 +147,7 @@ useful when need to create multiple objects in R
 
 assign() function can use as assign the data frame to a new object with the name obtained in gsub() output, which is 'chr5'
 
-the code simplify: assign('chr5',read.csv(GenomeWideSNP_6.na35.annot_13032018_Chr5.csv))
+the code simplify: ```assign('chr5',read.csv(GenomeWideSNP_6.na35.annot_13032018_Chr5.csv))```
 
 ```
 for (i in 1:length(ls_files)) assign(gsub("*.*GenomeWideSNP_6.na35.annot_13032018_|.csv", "", ls_files[i]), read.csv(ls_files[i]))
