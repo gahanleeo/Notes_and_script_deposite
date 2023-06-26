@@ -1,0 +1,90 @@
+Module: bcftools/1.9b
+Module: tabix/1.9
+
+# checking
+zcat GTEx_Analysis_2021-02-11_v9_WholeGenomeSeq_944Indiv_Analysis_Freeze.SHAPEIT2_phased.vcf.gz | less -S
+# in MacOS, using 
+gunzip -c GTEx_Analysis_2021-02-11_v9_WholeGenomeSeq_944Indiv_Analysis_Freeze.SHAPEIT2_phased.vcf.gz | head
+
+
+# subseting
+tabix -h GTEx_Analysis_2021-02-11_v9_WholeGenomeSeq_953Indiv.SHAPEIT2_phased.vcf.gz chr5:1100000-1500000 > TERT-CLPTM1L_project/GTEx_Analysis_2021-02-11_v9_WholeGenomeSeq_953Indiv.SHAPEIT2_phased_hg38_chr5.1100000.1500000.vcf
+
+
+## to use in R
+library(vcfR)
+library(tidyr)
+library(reshape2)
+library(stringr) 
+library(textclean)
+
+snp.list <- data.frame(rsid = c("TERT_TR2",
+                                "haplotype_2SNP",
+                                "haplotype_3SNP",
+                                "rs56345976",
+                                "rs33961405",
+                                "rs10069690",
+                                "rs2242652",
+                                "rs2853669",
+                                "rs7712562",
+                                "rs2735940",
+"rs2736100"),
+                       SNP.pick_hg38 = c("chr5:1275400:G:A",
+                                         "chr5:1276752:G:A",
+                                         "chr5:1276753:G:A",
+                                         "chr5:1276758:G:A",
+                                         "chr5:1277462:G:A",
+                                         "chr5:1279675:C:T",
+                                         "chr5:1279913:G:A",
+                                         "chr5:1295234:A:G",
+                                         "chr5:1295957:A:G",
+                                         "chr5:1296371:A:G",
+					 "chr5:1286401:C:A",
+))
+
+rs2853677	chr5:1287079:G:A
+rs7705526	chr5:1285859:C:A
+
+
+vcf.file.tmp <- read.vcfR("../TERT-CLPTM1L_project/data_WGS30x_onGRCh38/imputing/panel_1KGP_SNV_INDEL_SV_HapsTRs_phased_panel_hg38.sort.vcf.gz")
+
+# subset VCF for T2/haplotypes
+vcf.file.set <- vcf.file.tmp[ which(getPOS(vcf.file.tmp) %in% gsub("chr5:|:[A-Z]", "", snp.list$SNP.pick_hg38)), ]
+
+# get and format genotypes
+vcf_genotypes.tmp <- extract.gt(
+  vcf.file.set,
+  element = "GT",
+  mask = FALSE,
+  as.numeric = FALSE,
+  return.alleles = TRUE,
+  IDtoRowNames = TRUE,
+  extract = TRUE,
+  convertNA = TRUE
+)
+
+geno_df.tmp <- as.data.frame(t(vcf_genotypes.tmp))
+
+names(geno_df.tmp) <- snp.list$rsid[ match(gsub("^5:|:[A-Z]", "", names(geno_df.tmp)), gsub("chr5:|:[A-Z]", "", snp.list$SNP.pick_hg38)) ]
+geno_df.tmp$ID_person <- row.names(geno_df.tmp)
+geno_df.tmp <- data.frame(lapply(geno_df.tmp, function(x){ gsub("\\|", " ", x)}))
+
+
+
+# get and format haplotypes
+vcf_haplotype <- extract.haps(
+  vcf.file.set, mask = FALSE, unphased_as_NA = TRUE, verbose = TRUE)
+head(as.data.frame(vcf_haplotype[,1:5]))
+
+haps_df <- as.data.frame(t(vcf_haplotype))
+haps_df$haplotypes <- unite(haps_df, col = "set", sep = "", remove = TRUE, na.rm = FALSE)
+haps_df$sample <- row.names(haps_df)
+haps_df$ID <- str_sub(haps_df$sample, -1)
+haps_df$sample <- gsub("_1$", "", haps_df$sample)
+haps_df$sample <- gsub("_0$", "", haps_df$sample)
+haps_df$haplotypes <- haps_df$haplotypes$set
+haps_df <- haps_df %>% dplyr::select(c("sample", "ID", "haplotypes", everything()))
+
+
+
+
