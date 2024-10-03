@@ -43,6 +43,10 @@ source myconda
 conda activate parse_v130
 
 # run LR-split pipeline first step of demulitplex
-python LR-splitpipe/LR-splitpipe/demultiplex.py all -f /data/leec20/parse_single_cell/Long_read_pacbio_with_parse_test/pacbio_unaligned_bams/fastqs_removed_kinnex_primer_by_limma/lib2.pacbio.fastq.gz -o ./Split_LR_out/Split_pi_lib2 -k  WT_mega -c v2 -t 36 --delete_input --chunksize 10**5
+
+python LR-splitpipe/LR-splitpipe/demultiplex.py all -f ./lib2.pacbio.fastq.gz\
+ -o ./Split_LR_out/Split_pi_lib2\
+ -k  WT_mega -c v2 -t 36 --delete_input\
+ --chunksize 10**5
 
 ```
